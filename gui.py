@@ -51,7 +51,7 @@ class Matchland(QtWidgets.QMainWindow):
 
     def display(self):
         beast = self.combo.currentText()
-        result = self.data.sort_values(beast, ascending=False)[
+        result = self.data.sort_values([beast, 'Cost'], ascending=[False, True])[
             ['World', 'Chapter', 'Level', 'Cost'] + [beast]].dropna().astype(int)
         model = PandasModel(result)
         self.view.setModel(model)
